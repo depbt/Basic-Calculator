@@ -12,5 +12,5 @@
 - Add JavaScript functionality
 - Improve design and responsivenes
 
-Author
+Author.
 @depbt
