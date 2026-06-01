@@ -2,20 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Colorful Calculator</title>
-
+<title>Calculator</title>
 <style>
 body {
-    background: linear-gradient(135deg, #667eea, #010101);
+    background-color: black;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
 }
 
-/* Calculator box */
+h1 {
+    text-align: center;
+    color: white;
+    font-family: 'Courier New', monospace;
+    font-size: 26px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
 #calculator {
     background: #3c4895;
     padding: 20px;
@@ -23,7 +30,6 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-/* Display */
 #display {
     width: 90%;
     height: 60px;
@@ -37,14 +43,12 @@ body {
     color: #fff;
 }
 
-/* Buttons grid */
 #keys {
     display: grid;
     grid-template-columns: repeat(4, 60px);
     gap: 10px;
 }
 
-/* Buttons */
 button {
     height: 60px;
     border: none;
@@ -53,92 +57,75 @@ button {
     cursor: pointer;
     transition: 0.2s;
     color: white;
-}
-
-
-button:nth-child(n+5) {
     background: #4e54c8;
 }
 
-
-button:nth-child(-n+4) {
-    background: #ff7a18;
-}
-
-
-button:nth-child(15) {
-    background: #00c9a7;
-}
-
-button:nth-child(16) {
-    background: #ff4b5c;
-}
-
-/* Hover effect */
 button:hover {
     transform: scale(1.1);
     opacity: 0.9;
 }
-.title {
-      position: absolute;
-      color: black;
-      top: 20px;              /* distance from top */
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 28px;
-      font-weight: bold;
-      font: larger;
-    }
+
+.op-btn {
+    background: #ff7a18;
+}
+
+.eq-btn {
+    background: #00c9a7;
+}
+
+.clr-btn {
+    background: #ff4b5c;
+}
 </style>
 </head>
-
 <body>
+
 <div id="calculator">
+    <h1>SIMPLE CALCULATOR</h1>
     <input id="display" readonly>
-     <title>Calculator</title>
-<div class="title">Simple Calculator</div>
     <div id="keys">
-        <button onclick="appendTODisplay('+')">+</button>
-        <button onclick="appendTODisplay('-')">-</button>
-        <button onclick="appendTODisplay('*')">*</button>
-        <button onclick="appendTODisplay('/')">/</button>
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button class="op-btn" onclick="appendToDisplay('+')">+</button>
 
-        <button onclick="appendTODisplay('1')">1</button>
-        <button onclick="appendTODisplay('2')">2</button>
-        <button onclick="appendTODisplay('3')">3</button>
-        <button onclick="appendTODisplay('4')">4</button>
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button class="op-btn" onclick="appendToDisplay('-')">-</button>
 
-        <button onclick="appendTODisplay('5')">5</button>
-        <button onclick="appendTODisplay('6')">6</button>
-        <button onclick="appendTODisplay('7')">7</button>
-        <button onclick="appendTODisplay('8')">8</button>
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button class="op-btn" onclick="appendToDisplay('*')">*</button>
 
-        <button onclick="appendTODisplay('9')">9</button>
-        <button onclick="appendTODisplay('0')">0</button>
-        <button onclick="calculate()">=</button>
-        <button onclick="cleardisplay()">C</button>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="appendToDisplay('.')">.</button>
+        <button class="eq-btn" onclick="calculate()">=</button>
+        <button class="clr-btn" onclick="clearDisplay()">C</button>
     </div>
 </div>
 
 <script>
-let display = document.getElementById("display");
+    let display = document.getElementById("display");
 
-function appendTODisplay(input) {
-    display.value += input;
-}
-
-function cleardisplay() {
-    display.value = "";
-}
-
-function calculate() {
-    try {
-        display.value = eval(display.value);
-    } catch {
-        display.value = "Error";
+    function appendToDisplay(input) {
+        display.value += input;
     }
-}
+
+    function clearDisplay() {
+        display.value = "";
+    }
+
+    function calculate() {
+        try {
+            display.value = eval(display.value);
+        } catch(e) {
+            display.value = "Error";
+        }
+    }
 </script>
 
 </body>
 </html>
+
